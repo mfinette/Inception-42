@@ -1,81 +1,3 @@
-# version: '3'
-# services:
-#   mariadb:
-#     container_name: mariadb
-#     image: mariadb
-#     networks:
-#       - inception
-#     build:
-#       context: requirements/mariadb
-#       dockerfile: Dockerfile
-#       args:
-#         SQL_DATABASE: $SQL_DATABASE
-#         SQL_USER: $SQL_USER
-#         SQL_PWD: $SQL_PWD
-#         SQL_ROOT_PWD: $SQL_ROOT_PWD
-#       env_file: .env
-#       volumes:
-#         - mariadb:/var/lib/mysql
-#       restart: unless-stopped
-#       expose:
-#         - "3306"
-
-#   nginx:
-#     container_name: nginx
-#     image: nginx
-#     networks:
-#       - inception
-#     depends_on:
-#       - wordpress
-#     build:
-#       context: requirements/mariadb
-#       dockerfile: Dockerfile
-#       args:
-#         WP_PATH: $WP_PATH
-#         WP_URL: $WP_URL
-#       env_file: .env
-#       volumes:
-#         - wordpress:/var/www/wordpress
-#       restart: on-failure
-#       ports:
-#         - "443:443"
-
-#   wordpress:
-#     container_name: wordpress
-#     image: wordpress
-#     networks:
-#       - inception
-#     depends_on:
-#       - mariadb
-#     build:
-#       context: requirements/wordpress
-#       dockerfile: Dockerfile
-#       env_file: .env
-#       volumes:
-#         - wordpress:/var/www/wordpress
-#       restart: on-failure
-#       expose:
-#         - "9000"
-
-#   volumes:
-#     wordpress:
-#       driver: local
-#       driver_opts:
-#         type: 'none'
-#         o: 'bind'
-#         device: $WP_VOLUME_PATH
-#     mariadb:
-#       driver: local
-#       driver_opts:
-#         type: 'none'
-#         o: 'bind'
-#         device: $MARIADB_VOLUME_PATH
-
-#   networks:
-#     inception:
-#       driver: bridge
-
-
 version: '3'
 services:
   mariadb:
@@ -106,7 +28,7 @@ services:
     depends_on:
       - wordpress
     build:
-      context: requirements/mariadb
+      context: requirements/nginx
       dockerfile: Dockerfile
       args:
         WP_PATH: $WP_PATH
