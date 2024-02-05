@@ -55,3 +55,5 @@ fi
 # Run PHP
 mkdir -p /run/php
 php-fpm7.4 -F
+
+echo "Inception launched" >&2
