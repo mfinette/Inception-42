@@ -52,6 +52,8 @@ if [ ! -f "${WP_PATH}/wp-config.php" ]; then
 
 fi
 
+chown -R www-data:www-data /var/www/wordpress/
+
 # Run PHP
 mkdir -p /run/php
 php-fpm7.4 -F
