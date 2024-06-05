@@ -19,6 +19,7 @@ RUN service mariadb start && \
     FLUSH PRIVILEGES;" && \
     mysqladmin -u root -p$SQL_ROOT_PWD shutdown
 
+
 CMD ["mysqld_safe"]
 
 EXPOSE 3306
