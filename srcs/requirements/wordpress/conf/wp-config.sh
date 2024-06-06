@@ -16,7 +16,7 @@ if [ ! -f "${WP_PATH}/wp-config.php" ]; then
     --path=$WP_PATH
   echo "wp-config.php created"
   echo "Setting up admin" >&2
-  # More wordpress config, admin user
+  # More wordpress config, admin user (mfinette)
   wp core install --allow-root \
     --url="${WP_URL}" \
     --title="${WP_TITLE}" \
@@ -37,7 +37,7 @@ if [ ! -f "${WP_PATH}/wp-config.php" ]; then
 fi
 
 chown -R www-data:www-data /var/www/wordpress/
-
+chown -R www-data:www-data /var/www/wordpress/wp-content/
 
 # Run PHP
 mkdir -p /run/php
