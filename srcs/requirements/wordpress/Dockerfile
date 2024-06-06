@@ -7,7 +7,6 @@ RUN apt-get install -y php-fpm
 RUN apt-get install -y php-mysql
 RUN apt-get install -y mariadb-client
 RUN apt-get install -y msmtp
-# RUN apt-get install -y sendmail
 
 COPY conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 
